@@ -1,34 +1,23 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import type { ThumbnailInfo } from './types/types';
+import URLInput from './components/URLInput';
+import ThumbnailDisplay from './components/ThumbnailDisplay';
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [thumbnails, setThumbnails] = useState<ThumbnailInfo[]>([]);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div className="app">
+      <header className="app-header">
+        <h1>YouTube Thumbnail Downloader</h1>
+        <p>Download high-quality thumbnails from any YouTube video</p>
+      </header>
+      <main className="app-main">
+        <URLInput />
+        {thumbnails.length > 0 && <ThumbnailDisplay thumbnails={thumbnails} />}
+      </main>
+    </div>
   )
 }
 
