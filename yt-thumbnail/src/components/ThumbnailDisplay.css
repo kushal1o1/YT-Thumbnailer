@@ -62,6 +62,16 @@
   transition: background-color 0.2s ease;
 }
 
-.download-button:hover {
+.download-button:hover:not(:disabled) {
   background-color: #2563eb;
+}
+
+.download-button:disabled {
+  background-color: #94a3b8;
+  cursor: not-allowed;
+}
+
+.download-button.downloading {
+  background-color: #60a5fa;
+  cursor: wait;
 }
