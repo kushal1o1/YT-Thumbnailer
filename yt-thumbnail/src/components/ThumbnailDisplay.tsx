@@ -1,4 +1,7 @@
+import { useState } from 'react';
 import type { ThumbnailInfo } from '../types/types';
+import { downloadImage } from '../utils/download';
+import toast from 'react-hot-toast';
 import './ThumbnailDisplay.css';
 
 interface ThumbnailDisplayProps {
@@ -6,6 +9,19 @@ interface ThumbnailDisplayProps {
 }
 
 const ThumbnailDisplay: React.FC<ThumbnailDisplayProps> = ({ thumbnails }) => {
+  const [downloading, setDownloading] = useState<number | null>(null);
+
+  const handleDownload = async (thumbnail: ThumbnailInfo, index: number) => {
+    setDownloading(index);
+    try {
+      await downloadImage(thumbnail.url, thumbnail.quality);
+      toast.success(`Downloaded ${thumbnail.quality} thumbnail successfully!`);
+    } catch (error) {
+      toast.error('Failed to download thumbnail. Please try again.');
+    }
+    setDownloading(null);
+  };
+
   return (
     <div className="thumbnail-grid">
       {thumbnails.map((thumbnail, index) => (
@@ -25,8 +41,12 @@ const ThumbnailDisplay: React.FC<ThumbnailDisplayProps> = ({ thumbnails }) => {
               </span>
             )}
           </div>
-          <button className="download-button">
-            Download
+          <button 
+            className={`download-button ${downloading === index ? 'downloading' : ''}`}
+            onClick={() => handleDownload(thumbnail, index)}
+            disabled={downloading !== null}
+          >
+            {downloading === index ? 'Downloading...' : 'Download'}
           </button>
         </div>
       ))}
