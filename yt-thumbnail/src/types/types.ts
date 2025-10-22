@@ -1,8 +1,10 @@
+export type ThumbnailQuality = 'default' | 'medium' | 'high' | 'standard' | 'maxres';
+
 export interface ThumbnailInfo {
   url: string;
-  quality: 'default' | 'medium' | 'high' | 'standard' | 'maxres';
-  width?: number;
-  height?: number;
+  quality: ThumbnailQuality;
+  width: number;
+  height: number;
 }
 
 export interface YouTubeVideo {
