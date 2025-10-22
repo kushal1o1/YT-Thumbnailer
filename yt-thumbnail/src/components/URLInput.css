@@ -1,0 +1,55 @@
+.url-input-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.input-wrapper {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 0.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.url-input {
+  flex: 1;
+  padding: 1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.url-input:focus {
+  border-color: #3b82f6;
+}
+
+.fetch-button {
+  padding: 0 2rem;
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.fetch-button:hover:not(:disabled) {
+  background-color: #2563eb;
+}
+
+.fetch-button:disabled {
+  background-color: #94a3b8;
+  cursor: not-allowed;
+}
+
+.fetch-button.loading {
+  position: relative;
+  background-color: #60a5fa;
+}
