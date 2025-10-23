@@ -35,6 +35,20 @@ const checkImageExists = async (url: string): Promise<boolean> => {
   }
 };
 
+const probeImageSize = (url: string): Promise<{ width: number; height: number }> => {
+  return new Promise((resolve) => {
+    const img = new Image();
+    img.onload = () => {
+      resolve({ width: img.naturalWidth, height: img.naturalHeight });
+    };
+    img.onerror = () => {
+      // fallback to 0x0 if load fails
+      resolve({ width: 0, height: 0 });
+    };
+    img.src = url;
+  });
+};
+
 /**
  * Generates thumbnail URLs for a given YouTube video ID and checks their availability
  */
@@ -48,23 +62,26 @@ export const generateThumbnailUrls = async (videoId: string) => {
   ] as const;
 
   const thumbnails = await Promise.all(
-    qualities.map(async ({ quality, width, height }) => {
+    qualities.map(async ({ quality }) => {
       const url = `https://img.youtube.com/vi/${videoId}/${quality}.jpg`;
       const exists = await checkImageExists(url);
-      
+
       if (exists) {
         const mappedQuality = quality === 'sddefault' ? 'standard' :
                             quality === 'hqdefault' ? 'high' :
                             quality === 'mqdefault' ? 'medium' :
                             quality === 'maxres' ? 'maxres' : 'default';
-        
+
+        const { width, height } = await probeImageSize(url);
+
         return {
           url,
           quality: mappedQuality,
-          width,
-          height
+          width: width || 0,
+          height: height || 0,
         } as const;
       }
+
       return null;
     })
   );
