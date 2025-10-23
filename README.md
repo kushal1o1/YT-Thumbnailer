@@ -1,73 +1,69 @@
-# React + TypeScript + Vite
+# YT-Thumbnailer 🎬
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, fast, and elegant YouTube thumbnail downloader built with React and TypeScript. Download high-quality thumbnails from any YouTube video with just a paste.
 
-Currently, two official plugins are available:
+![App Screenshot 1](src/assets/screenshot1.jpg)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Features
 
-## React Compiler
+- 🖼️ Download thumbnails in all available qualities
+- 🚀 Client-side only - no backend required
+- 👁️ Preview thumbnails before downloading
+- 💨 Fast and responsive UI
+- 🎨 YouTube-inspired design
+- 📱 Mobile-friendly layout
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🚀 Demo
 
-## Expanding the ESLint configuration
+Try it live: [YT-Thumbnailer Demo](https://kushal1o1.github.io/YT-thumbnailer/)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+![App Screenshot 2](src/assets/screenshot2.jpg)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🛠️ Tech Stack
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- React
+- TypeScript
+- Vite
+- CSS3 with modern animations
+- React Hot Toast for notifications
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 💻 Local Development
+
+1. Clone the repository
+```bash
+git clone https://github.com/kushal1o1/YT-thumbnailer.git
+cd YT-thumbnailer
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+2. Install dependencies
+```bash
+npm install
 ```
+
+3. Start the development server
+```bash
+npm run dev
+```
+
+4. Build for production
+```bash
+npm run build
+```
+
+## 🌟 Usage
+
+1. Copy any YouTube video URL
+2. Paste it into the input field
+3. Choose your preferred thumbnail quality
+4. Click download and enjoy!
+
+
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/kushal1o1/YT-thumbnailer/issues).
+
+
+---
+
+Built with ❤️ by [kushal1o1](https://github.com/kushal1o1) • © 2025
