@@ -7,9 +7,10 @@ import './URLInput.css';
 
 interface URLInputProps {
   onThumbnailsFetched: (thumbnails: ThumbnailInfo[]) => void;
+  onLoadingChange?: (state: import('../types/types').LoadingState) => void;
 }
 
-const URLInput: React.FC<URLInputProps> = ({ onThumbnailsFetched }) => {
+const URLInput: React.FC<URLInputProps> = ({ onThumbnailsFetched, onLoadingChange }) => {
   const [url, setUrl] = useState<string>('');
   const [status, setStatus] = useState<LoadingState>('idle');
   const [error, setError] = useState<string>('');
@@ -22,6 +23,7 @@ const URLInput: React.FC<URLInputProps> = ({ onThumbnailsFetched }) => {
 
   const handleFetchThumbnails = async () => {
     setStatus('loading');
+    onLoadingChange?.('loading');
     setError('');
 
     const videoId = extractYouTubeVideoId(url);
@@ -40,12 +42,14 @@ const URLInput: React.FC<URLInputProps> = ({ onThumbnailsFetched }) => {
       }
       onThumbnailsFetched(thumbnails);
       setStatus('success');
+      onLoadingChange?.('success');
       toast.success('Thumbnails loaded successfully!');
     } catch (err) {
       const errorMsg = err instanceof Error ? err.message : 'Failed to fetch thumbnails. Please try again.';
       setError(errorMsg);
       toast.error(errorMsg);
       setStatus('error');
+      onLoadingChange?.('error');
     }
   };
 

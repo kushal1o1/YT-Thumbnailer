@@ -10,6 +10,7 @@ interface ThumbnailDisplayProps {
 
 const ThumbnailDisplay: React.FC<ThumbnailDisplayProps> = ({ thumbnails }) => {
   const [downloading, setDownloading] = useState<number | null>(null);
+  const [previewIndex, setPreviewIndex] = useState<number | null>(null);
 
   const handleDownload = async (thumbnail: ThumbnailInfo, index: number) => {
     setDownloading(index);
@@ -23,34 +24,70 @@ const ThumbnailDisplay: React.FC<ThumbnailDisplayProps> = ({ thumbnails }) => {
   };
 
   return (
-    <div className="thumbnail-grid">
-      {thumbnails.map((thumbnail, index) => (
-        <div key={index} className="thumbnail-card">
-          <div className="thumbnail-image-container">
-            <img 
-              src={thumbnail.url} 
-              alt={`YouTube thumbnail ${thumbnail.quality}`}
-              className="thumbnail-image"
-            />
-          </div>
-          <div className="thumbnail-info">
-            <span className="quality-badge">{thumbnail.quality}</span>
-            {thumbnail.width && thumbnail.height && (
-              <span className="resolution-badge">
-                {thumbnail.width}x{thumbnail.height}
-              </span>
-            )}
-          </div>
-          <button 
-            className={`download-button ${downloading === index ? 'downloading' : ''}`}
-            onClick={() => handleDownload(thumbnail, index)}
-            disabled={downloading !== null}
+    <>
+      <div className="thumbnail-grid">
+        {thumbnails.map((thumbnail, index) => (
+          <div 
+            key={index} 
+            className="thumbnail-card"
+            onClick={() => setPreviewIndex(index)}
           >
-            {downloading === index ? 'Downloading...' : 'Download'}
-          </button>
+            <div className="thumbnail-image-container">
+              <img 
+                src={thumbnail.url} 
+                alt={`YouTube thumbnail ${thumbnail.quality}`}
+                className="thumbnail-image"
+              />
+              <div className="thumbnail-overlay">
+                <div className="overlay-text">Click to Preview</div>
+              </div>
+            </div>
+      
+              <span className="quality-badge">{thumbnail.quality}</span>
+              {thumbnail.width && thumbnail.height && (
+                <span className="resolution-badge">
+                  {thumbnail.width}x{thumbnail.height}
+                </span>
+              )}
+
+          </div>
+        ))}
+      </div>
+
+      {previewIndex !== null && (
+        <div className="preview-modal" onClick={() => setPreviewIndex(null)}>
+          <div className="preview-content" onClick={(e) => e.stopPropagation()}>
+            <button className="preview-close" onClick={() => setPreviewIndex(null)}>×</button>
+            <img 
+              src={thumbnails[previewIndex].url} 
+              alt={`Preview ${thumbnails[previewIndex].quality}`}
+              className="preview-image"
+            />
+            <div className="preview-details">
+              <div className="preview-info-row">
+                <span className="preview-label">Quality:</span>
+                <span className="preview-value">{thumbnails[previewIndex].quality}</span>
+              </div>
+              {thumbnails[previewIndex].width && thumbnails[previewIndex].height && (
+                <div className="preview-info-row">
+                  <span className="preview-label">Resolution:</span>
+                  <span className="preview-value">
+                    {thumbnails[previewIndex].width}x{thumbnails[previewIndex].height}
+                  </span>
+                </div>
+              )}
+              <button 
+                className="preview-download-button"
+                onClick={() => handleDownload(thumbnails[previewIndex], previewIndex)}
+                disabled={downloading !== null}
+              >
+                {downloading === previewIndex ? 'Downloading...' : 'Download High Quality'}
+              </button>
+            </div>
+          </div>
         </div>
-      ))}
-    </div>
+      )}
+    </>
   );
 };
 
