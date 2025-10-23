@@ -1,0 +1,85 @@
+.skeleton-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+  padding: 24px 0;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.skeleton-card {
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.skeleton-image {
+  width: 100%;
+  padding-top: 56.25%;
+  background: #f0f0f0;
+  border-radius: 12px;
+  animation: shimmer 1.5s infinite linear;
+  background-image: linear-gradient(
+    to right,
+    #f0f0f0 0%,
+    #f8f8f8 20%,
+    #f0f0f0 40%,
+    #f0f0f0 100%
+  );
+  background-size: 800px 100%;
+  background-repeat: no-repeat;
+}
+
+.skeleton-info { 
+  display: flex; 
+  gap: 8px; 
+  align-items: center;
+  padding: 0 4px;
+}
+
+.skeleton-badge { 
+  width: 40%; 
+  height: 12px; 
+  background: #f0f0f0;
+  border-radius: 4px;
+  animation: shimmer 1.5s infinite linear;
+  background-image: linear-gradient(
+    to right,
+    #f0f0f0 0%,
+    #f8f8f8 20%,
+    #f0f0f0 40%,
+    #f0f0f0 100%
+  );
+  background-size: 800px 100%;
+  background-repeat: no-repeat;
+}
+
+.skeleton-badge.small { 
+  width: 25%; 
+}
+
+.skeleton-button { 
+  height: 36px;
+  background: #f0f0f0;
+  border-radius: 18px;
+  animation: shimmer 1.5s infinite linear;
+  background-image: linear-gradient(
+    to right,
+    #f0f0f0 0%,
+    #f8f8f8 20%,
+    #f0f0f0 40%,
+    #f0f0f0 100%
+  );
+  background-size: 800px 100%;
+  background-repeat: no-repeat;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -400px 0;
+  }
+  100% {
+    background-position: 400px 0;
+  }
+}
