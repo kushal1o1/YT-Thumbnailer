@@ -7,7 +7,46 @@ import { Toaster } from 'react-hot-toast';
 import './App.css';
 
 function App() {
-  const [thumbnails, setThumbnails] = useState<ThumbnailInfo[]>([]);
+  const defaultThumbnails: ThumbnailInfo[] = [
+    {
+      quality: "maxres",
+      width: 1280,
+      height: 720,
+      url: "https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg"
+    },
+    {
+      quality: "maxres",
+      width: 1280,
+      height: 720,
+      url: "https://img.youtube.com/vi/oN2Xs-MvxLw/maxresdefault.jpg"
+    },
+    {
+      quality: "maxres",
+      width: 1280,
+      height: 720,
+      url: "https://img.youtube.com/vi/SPs7nj26ZKE/maxresdefault.jpg"
+    },
+    {
+      quality: "maxres",
+      width: 1280,
+      height: 720,
+      url: "https://img.youtube.com/vi/0e3GPea1Tyg/maxresdefault.jpg"
+    },
+        {
+      quality: "maxres",
+      width: 1280,
+      height: 720,
+      url: "https://img.youtube.com/vi/mEzCiVq1fMY/maxresdefault.jpg"
+    },
+        {
+      quality: "maxres",
+      width: 1280,
+      height: 720,
+      url: "https://img.youtube.com/vi/3LopI4YeC4I/maxresdefault.jpg"
+    }
+  ];
+
+  const [thumbnails, setThumbnails] = useState<ThumbnailInfo[]>(defaultThumbnails);
   const [loading, setLoading] = useState(false);
 
   return (
@@ -64,25 +103,24 @@ function App() {
           ) : null}
 
           <section className="features" aria-label="features">
-            <h2>Features</h2>
             <div className="features-grid">
               <div className="feature">
                 <h3>High Quality</h3>
                 <p>Download original thumbnails in available qualities.</p>
               </div>
               <div className="feature">
-                <h3>No Backend</h3>
-                <p>Lightweight client-only solution that works in the browser.</p>
+                <h3>No Auth</h3>
+                <p>No authentication required to download thumbnails.</p>
               </div>
               <div className="feature">
-                <h3>Quick Preview</h3>
-                <p>Preview thumbnails before downloading.</p>
+                <h3>Quick Preview & Free</h3>
+                <p>Preview thumbnails before downloading. No watermarks or hidden fees.</p>
               </div>
             </div>
           </section>
 
           <footer className="app-footer">
-            <span>Built with care • © {new Date().getFullYear()}</span>
+            <span>Built with Love • © {new Date().getFullYear()}</span>
             <span>•</span>
             <a href="https://github.com/kushal1o1/YT-Thumbnailer" target="_blank" rel="noreferrer">
               <svg height="20" width="20" viewBox="0 0 16 16" fill="currentColor">
