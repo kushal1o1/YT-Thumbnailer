@@ -18,6 +18,7 @@ const ThumbnailDisplay: React.FC<ThumbnailDisplayProps> = ({ thumbnails }) => {
       await downloadImage(thumbnail.url, thumbnail.quality);
       toast.success(`Downloaded ${thumbnail.quality} thumbnail successfully!`);
     } catch (error) {
+      console.error('Download error:', error);
       toast.error('Failed to download thumbnail. Please try again.');
     }
     setDownloading(null);
