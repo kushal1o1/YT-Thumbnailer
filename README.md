@@ -61,8 +61,15 @@ npm run build
 
 ## 🤝 Contributing
 
-Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/kushal1o1/YT-thumbnailer/issues).
+Contributions, issues, and feature requests are welcome! Please read the contribution guide and project standards before opening a pull request.
 
+- Contribution guide: [CONTRIBUTION.md](CONTRIBUTION.md)
+- Coding standards: [STANDARDS.md](STANDARDS.md)
+- License: [LICENSE](LICENSE)
+
+To contribute: fork the repo, create a feature branch (e.g. `feat/add-default-thumbnails`), follow the commit message prefixes (`feat:`, `fix:`, `refactor:`, `UI:`, etc.), and open a PR targeting `main`.
+
+See `CONTRIBUTION.md` for full details on branch naming, commit message conventions, PR checklist and testing expectations.
 
 ---
 
