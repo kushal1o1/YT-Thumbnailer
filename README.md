@@ -1,4 +1,4 @@
-# YT-Thumbnailer 🎬
+# YT-Thumbnailer 
 
 A modern, fast, and elegant YouTube thumbnail downloader built with React and TypeScript. Download high-quality thumbnails from any YouTube video with just a paste.
 
@@ -15,7 +15,7 @@ A modern, fast, and elegant YouTube thumbnail downloader built with React and Ty
 
 ## 🚀 Demo
 
-Try it live: [YT-Thumbnailer Demo](https://kushal1o1.github.io/YT-thumbnailer/)
+Try it live: [YT-Thumbnailer Demo](https://thumbnaildownload.vercel.app)
 
 ![App Screenshot 2](src/assets/screenshot2.jpg)
 
