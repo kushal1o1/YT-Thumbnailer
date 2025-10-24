@@ -1,0 +1,8 @@
+# robots.txt for YT-Thumbnailer
+# Allow all crawlers to access the site. Update as needed.
+User-agent: *
+Allow: /
+
+# Point crawlers to the sitemap
+Sitemap: https://kushal1o1.github.io/YT-thumbnailer/sitemap.xml
+Host: kushal1o1.github.io
